@@ -3,10 +3,21 @@ import { ArrowRight, Play, Sparkles, Cpu, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal, FloatingElement, GlowPulse, Parallax } from "@/components/ui/scroll-animations";
 import { motion } from "framer-motion";
+import heroBanner from "@/assets/hero-banner.jpg";
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-hero min-h-[90vh] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroBanner} 
+          alt="AI automation visualization" 
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      </div>
+      
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <GlowPulse className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-cyan/10 rounded-full blur-3xl" />

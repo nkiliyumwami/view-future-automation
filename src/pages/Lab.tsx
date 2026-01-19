@@ -12,6 +12,7 @@ import {
   Lightbulb,
   FlaskConical,
 } from "lucide-react";
+import aiRobotics from "@/assets/ai-robotics.jpg";
 
 const phases = [
   {
@@ -87,6 +88,16 @@ const Lab = () => {
     <Layout>
       {/* Hero Section */}
       <section className="pt-20 pb-16 lg:pt-28 lg:pb-24 bg-gradient-hero relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={aiRobotics} 
+            alt="Future of robotics and automation" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+        </div>
+        
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-violet/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-3xl" />
 
