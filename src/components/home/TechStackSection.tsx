@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { ScrollReveal, StaggerContainer, staggerItem } from "@/components/ui/scroll-animations";
+
 const tools = [
   { name: "OpenAI", category: "AI" },
   { name: "Google Cloud", category: "Cloud" },
@@ -18,35 +21,45 @@ export function TechStackSection() {
     <section className="py-16 lg:py-20 bg-background border-y border-border">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <ScrollReveal className="text-center mb-10">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
             Tools We Use
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Tools Strip */}
-        <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
+        <StaggerContainer className="flex flex-wrap justify-center gap-4 lg:gap-6" staggerDelay={0.05}>
           {tools.map((tool) => (
-            <div
+            <motion.div
               key={tool.name}
-              className="group relative px-5 py-3 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300"
+              variants={staggerItem as any}
+              whileHover={{ 
+                scale: 1.05, 
+                y: -4,
+                transition: { duration: 0.2 } 
+              }}
+              className="group relative px-5 py-3 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300 cursor-default"
             >
               <span className="font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                 {tool.name}
               </span>
               
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-foreground text-background text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+              <motion.div 
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-foreground text-background text-xs pointer-events-none whitespace-nowrap"
+                initial={{ opacity: 0, y: 5 }}
+                whileHover={{ opacity: 1, y: 0 }}
+              >
                 {tool.category}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Disclaimer */}
-        <p className="text-center text-xs text-muted-foreground mt-8">
-          We partner with leading technology providers to deliver best-in-class solutions.
-        </p>
+        <ScrollReveal delay={0.3} className="text-center text-xs text-muted-foreground mt-8">
+          <p>We partner with leading technology providers to deliver best-in-class solutions.</p>
+        </ScrollReveal>
       </div>
     </section>
   );
