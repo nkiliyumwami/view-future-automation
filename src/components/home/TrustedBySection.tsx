@@ -3,14 +3,14 @@ import { ScrollReveal, StaggerContainer, staggerItem } from "@/components/ui/scr
 import { Star, Quote } from "lucide-react";
 
 // Import logos
-import mtnLogo from "@/assets/logos/mtn-logo.png";
-import airtelLogo from "@/assets/logos/airtel-logo.png";
-import bkLogo from "@/assets/logos/bk-logo.webp";
+import mtnLogo from "@/assets/logos/mtn-logo.jpg";
+import airtelLogo from "@/assets/logos/airtel-logo.jpeg";
+import bkLogo from "@/assets/logos/bk-logo.png";
 
 const clients = [
-  { name: "MTN Rwanda", logo: mtnLogo },
-  { name: "Airtel Rwanda", logo: airtelLogo },
-  { name: "Bank of Kigali", logo: bkLogo },
+  { name: "MTN Rwanda", logo: mtnLogo, hasBg: true },
+  { name: "Airtel Rwanda", logo: airtelLogo, hasBg: true },
+  { name: "Bank of Kigali", logo: bkLogo, hasBg: false },
 ];
 
 const testimonials = [
@@ -69,11 +69,15 @@ export const TrustedBySection = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="w-32 h-20 md:w-40 md:h-24 rounded-2xl glass-card flex items-center justify-center p-4 transition-all duration-300 group-hover:shadow-glow-cyan group-hover:border-primary/30">
+                <div className="w-36 h-24 md:w-44 md:h-28 rounded-2xl bg-white dark:bg-white/10 flex items-center justify-center p-4 transition-all duration-300 group-hover:shadow-glow-cyan border border-border/50 group-hover:border-primary/30">
                   <img 
                     src={client.logo} 
                     alt={`${client.name} logo`}
-                    className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className={`max-w-full max-h-full object-contain transition-all duration-300 ${
+                      client.hasBg 
+                        ? 'rounded-lg' 
+                        : 'dark:brightness-0 dark:invert'
+                    }`}
                   />
                 </div>
                 <p className="text-xs text-muted-foreground text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
