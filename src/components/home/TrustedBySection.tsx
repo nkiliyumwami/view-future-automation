@@ -2,13 +2,15 @@ import { motion } from "framer-motion";
 import { ScrollReveal, StaggerContainer, staggerItem } from "@/components/ui/scroll-animations";
 import { Star, Quote } from "lucide-react";
 
+// Import logos
+import mtnLogo from "@/assets/logos/mtn-logo.png";
+import airtelLogo from "@/assets/logos/airtel-logo.png";
+import bkLogo from "@/assets/logos/bk-logo.webp";
+
 const clients = [
-  { name: "TechCorp Africa", initials: "TC" },
-  { name: "Safaricom", initials: "SF" },
-  { name: "MTN Group", initials: "MTN" },
-  { name: "Standard Bank", initials: "SB" },
-  { name: "Jumia", initials: "JM" },
-  { name: "Flutterwave", initials: "FW" },
+  { name: "MTN Rwanda", logo: mtnLogo },
+  { name: "Airtel Rwanda", logo: airtelLogo },
+  { name: "Bank of Kigali", logo: bkLogo },
 ];
 
 const testimonials = [
@@ -57,7 +59,7 @@ export const TrustedBySection = () => {
 
         {/* Client Logos Grid */}
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-20">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mb-20">
             {clients.map((client, index) => (
               <motion.div
                 key={client.name}
@@ -67,10 +69,12 @@ export const TrustedBySection = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl glass-card flex items-center justify-center transition-all duration-300 group-hover:shadow-glow-cyan group-hover:border-primary/30">
-                  <span className="text-2xl md:text-3xl font-bold font-display text-muted-foreground group-hover:text-primary transition-colors">
-                    {client.initials}
-                  </span>
+                <div className="w-32 h-20 md:w-40 md:h-24 rounded-2xl glass-card flex items-center justify-center p-4 transition-all duration-300 group-hover:shadow-glow-cyan group-hover:border-primary/30">
+                  <img 
+                    src={client.logo} 
+                    alt={`${client.name} logo`}
+                    className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
                 </div>
                 <p className="text-xs text-muted-foreground text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   {client.name}
