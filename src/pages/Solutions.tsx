@@ -14,11 +14,15 @@ import {
   Bot,
   Database,
 } from "lucide-react";
+import aiWorkflow from "@/assets/ai-workflow.jpg";
+import aiAnalytics from "@/assets/ai-analytics.jpg";
+import aiAssistant from "@/assets/ai-assistant.jpg";
 
 const solutions = [
   {
     id: "workflow",
     icon: Workflow,
+    image: aiWorkflow,
     title: "Workflow Automation",
     subtitle: "Operations & Compliance",
     description:
@@ -40,6 +44,7 @@ const solutions = [
   {
     id: "data",
     icon: BarChart3,
+    image: aiAnalytics,
     title: "Data Automation & Analytics",
     subtitle: "Insights & Intelligence",
     description:
@@ -61,6 +66,7 @@ const solutions = [
   {
     id: "ai",
     icon: MessageSquareText,
+    image: aiAssistant,
     title: "Applied AI Assistants",
     subtitle: "Intelligent Augmentation",
     description:
@@ -152,26 +158,37 @@ const Solutions = () => {
                 </div>
               </div>
 
-              {/* Automations List */}
+              {/* Automations List with Image */}
               <div
-                className={`p-6 lg:p-8 rounded-2xl border border-border bg-card ${
+                className={`rounded-2xl border border-border bg-card overflow-hidden ${
                   index % 2 === 1 ? "lg:order-1" : ""
                 }`}
               >
-                <h3 className="font-display text-lg font-semibold mb-6">
-                  Typical Automations
-                </h3>
-                <ul className="space-y-4">
-                  {solution.automations.map((automation) => (
-                    <li
-                      key={automation}
-                      className="flex items-start gap-3 text-muted-foreground"
-                    >
-                      <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span>{automation}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Solution Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={solution.image} 
+                    alt={solution.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                </div>
+                <div className="p-6 lg:p-8">
+                  <h3 className="font-display text-lg font-semibold mb-6">
+                    Typical Automations
+                  </h3>
+                  <ul className="space-y-4">
+                    {solution.automations.map((automation) => (
+                      <li
+                        key={automation}
+                        className="flex items-start gap-3 text-muted-foreground"
+                      >
+                        <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <span>{automation}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
